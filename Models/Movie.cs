@@ -1,7 +1,8 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using demo.Data;
 
-namespace MvcMovie.Models
+namespace demo.Models
 {
     public class Movie
     {
