@@ -65,10 +65,16 @@ namespace demo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
         {
+            try{
             if (ModelState.IsValid)
             {
                 _context.Add(movie);
                 await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            }
+            catch{
+                ModelState.AddModelError("","Mat ket noi toi may chu");
                 return RedirectToAction(nameof(Index));
             }
             return View(movie);
